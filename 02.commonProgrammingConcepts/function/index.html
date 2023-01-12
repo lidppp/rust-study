@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .load {
+      stroke-dasharray: 0 var(--w);
+      animation: move 3s infinite ease;
+      stroke-linecap: round;
+      --r: calc(calc(--w) * -1);
+    }
+
+    svg {
+      /* background: #ccc; */
+    }
+
+    svg line {
+      stroke: #999;
+      stroke-width: 4;
+      fill: none;
+
+      stroke-dasharray: 10 2;
+      stroke-dashoffset: 9;
+    }
+
+    @keyframes move {
+      form {
+        stroke-dasharray: 0 var(--w);
+        /* stroke-dashoffset: 0; */
+      }
+
+      to {
+        stroke-dasharray: var(--w) var(--w);
+        /* stroke-dashoffset: var(--r); */
+      }
+    }
+
+
+    @keyframes move1 {
+      form {
+        stroke-dashoffset: 0;
+      }
+
+      to {
+        stroke-dashoffset: 45;
+      }
+    }
+
+    @keyframes move2 {
+      form {
+        stroke-dashoffset: 15;
+      }
+
+      to {
+        stroke-dashoffset: 60;
+      }
+    }
+
+    @keyframes move3 {
+      form {
+        stroke-dashoffset: var(--w);
+      }
+
+      to {
+        stroke-dashoffset: var(--r);
+      }
+    }
+
+    .text-cls1 {
+      stroke-dasharray: 15 30;
+      --w: 0;
+      --r: calc(var(--w) + 180);
+      stroke-dashoffset: var(--w);
+      animation: move1 3s infinite linear;
+    }
+
+    .text-cls2 {
+      stroke-dasharray: 15 30;
+      --w: 15;
+      --r: calc(var(--w) + 180);
+      stroke-dashoffset: var(--w);
+      animation: move2 3s infinite linear;
+    }
+
+    /* .text-cls {
+      --r: calc(var(--w) + 180);
+      animation: move1 3s infinite linear;
+    } */
+
+  </style>
+</head>
+
+<body>
+  <svg viewBox="0 0 250 250" width="200px" height="200px" xmlns="http://www.w3.org/2000/svg">
+    <g>
+      <circle cx="100" cy="100" r="75" fill="none" stroke="none" stroke-width="5" />
+      <ellipse transform="rotate(90 100 100)" class="load" ry="74" rx="74" cy="100" cx="100" fill="none" stroke="#f00"
+        stroke-width="5" style="--w: 464;" />
+      <!-- <circle class="load" cx="100" cy="100" r="74" fill="none" stroke="#f00" stroke-width="20" /> -->
+    </g>
+
+    <g>
+      <rect x="100" y="100" width="150" height="150" fill="none" stroke="none" stroke-width="5" />
+      <rect class="load" x="24" y="24" width="150" height="150" fill="none" stroke="#f00" stroke-width="5"
+        style="--w: 600;" />
+    </g>
+  </svg>
+
+  <svg viewBox="0 0 250 250" width="200px" height="200px" xmlns="http://www.w3.org/2000/svg">
+    <g>
+      <rect x="20" y="20" width="150" height="150" fill="none" stroke="none" stroke-width="5" />
+      <rect class="load" x="20" y="20" width="150" height="150" fill="none" stroke="#f00" stroke-width="5"
+        style="--w: 600;" />
+    </g>
+  </svg>
+
+  <svg viewBox="0 0 250 250" width="200px" height="200px" xmlns="http://www.w3.org/2000/svg">
+    <g>
+      <line x1="10" y1="10" x2="70" y2="90" />
+    </g>
+  </svg>
+
+  <div></div>
+  <svg viewBox="0 0 250 250" width="200px" height="200px" xmlns="http://www.w3.org/2000/svg">
+    <g>
+      <text class="text-cls text-cls3" font-size="56" text-anchor="start" x="0" y="80" stroke="#2192FF" fill="none"
+        stroke-width="2">你好,世界</text>
+      <text class="text-cls text-cls2" font-size="56" text-anchor="start" x="0" y="80" stroke="#38E54D" fill="none"
+        stroke-width="2">你好,世界</text>
+      <text class="text-cls text-cls1" font-size="56" text-anchor="start" x="0" y="80" stroke="#FDFF00" fill="none"
+        stroke-width="2">你好,世界</text>
+      <!-- <text font-size="24" stroke-width="0" id="svg_2" y="298" x="230" stroke="#000" fill="#000000">ABCD</text> -->
+    </g>
+  </svg>
+  <div></div>
+  <button id="btn">测试</button>
+
+  <script>
+    function test (e) {
+      console.log(e.path)
+      console.log(e.composedPath())
+    }
+
+    document.querySelector("#btn").addEventListener("click", function (e) { test(e) });
+
+  </script>
+</body>
+
+</html>
